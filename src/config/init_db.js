@@ -13,22 +13,22 @@ export async function initDatabase() {
 
         await dbPool.query(`
             CREATE TABLE IF NOT EXISTS rooms(
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            name VARCHAR(255) NOT NULL,
-            capacity INT NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                name VARCHAR(255) NOT NULL,
+                capacity INT NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)
         `);
 
         await dbPool.query(`
             CREATE TABLE IF NOT EXISTS reservations(
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            room_id INT NOT NULL,
-            user_id INT NOT NULL,
-            start_time DATETIME NOT NULL,
-            end_time DATETIME NOT NULL,
-            status ENUM('active', 'cancelled') DEFAULT 'active',
-            FOREIGN KEY (room_id) REFERENCES rooms(id) ON DELETE CASCADE,
-            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                room_id INT NOT NULL,
+                user_id INT NOT NULL,
+                start_time DATETIME NOT NULL,
+                end_time DATETIME NOT NULL,
+                status ENUM('active', 'cancelled') DEFAULT 'active',
+                FOREIGN KEY (room_id) REFERENCES rooms(id) ON DELETE CASCADE,
+                FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
             )
         `);
 

@@ -2,20 +2,19 @@ import express from 'express';
 import 'dotenv/config';
 import { dbPool } from './config/db.js'
 import { initDatabase } from './config/init_db.js';
+import roomRoutes from './routes/room.routes.js';
 
 const app = express();
 
 app.use(express.json());
-
-app.get('/', (req, res) => {
-    res.send('API de Reservas de gimnasio funcionando');
-});
 
 try {
     await dbPool.query('SELECT 1+1 AS result');
     console.log('conexión a DB MySQL establecida con exito')
 
     await initDatabase();
+
+    app.use('/api/rooms', roomRoutes);
 
     app.listen(process.env.PORT, () => {
         console.log(`App listening port ${process.env.PORT}`)

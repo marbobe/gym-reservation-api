@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  # ----------------------------------------
+  # Data Base (MySQL)
+  # ----------------------------------------
+  db:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    restart: unless-stopped
+    environment: 
+      - MYSQL_ROOT_USER=${DB_USER}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
+    volumes:
+      - ./mysql_data
+# /var/lib/mysql cambiar volumes si no se quieren que los datos persistan al apagar el contenedor
+#${MYSQL_ROOT_USER} #${MYSQL_ROOT_PASSWORD} #${MYSQL_DATABASE}

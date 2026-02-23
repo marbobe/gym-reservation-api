@@ -3,6 +3,7 @@ import 'dotenv/config';
 import { dbPool } from './config/db.js'
 import { initDatabase } from './config/init_db.js';
 import roomRoutes from './routes/room.routes.js';
+import reservationRoutes from './routes/reservation.routes.js';
 
 const app = express();
 
@@ -15,6 +16,8 @@ try {
     await initDatabase();
 
     app.use('/api/rooms', roomRoutes);
+
+    app.use('/api/reservations', reservationRoutes)
 
     app.listen(process.env.PORT, () => {
         console.log(`App listening port ${process.env.PORT}`)

@@ -1,4 +1,4 @@
-import { makeReservation, getReservations } from "../services/reservation.service.js";
+import { makeReservation, getReservations, cancelReservation } from "../services/reservation.service.js";
 
 export const create = async (req, res) => {
     try {
@@ -28,5 +28,18 @@ export const getAll = async (req, res) => {
 
     } catch (error) {
         res.status(500).json({ error: error.message })
+    }
+}
+
+export const cancel = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const reservationCancelled = await cancelReservation(id);
+
+        if (reservationCancelled) {
+            res.status(200).json(`Reserva con id ${id} cancelada correctamente`)
+        }
+    } catch (error) {
+        res.status(400).json({ error: error.message })
     }
 }

@@ -33,3 +33,10 @@ export const getAllReservations = async (roomId) => {
         `, [roomId])
     return result
 }
+
+export const cancelReservationById = async (reservationId) => {
+    const [result] = await dbPool.query(`
+        UPDATE reservations SET status = 'cancelled' WHERE id = ? 
+        `, [reservationId])
+    return result.affectedRows;
+}

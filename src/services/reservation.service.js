@@ -1,4 +1,4 @@
-import { checkOverlap, createReservation, getAllReservations } from "../repositories/reservation.repository.js";
+import { checkOverlap, createReservation, getAllReservations, cancelReservationById } from "../repositories/reservation.repository.js";
 
 export const makeReservation = async (roomId, userId, startTime, endTime) => {
     if (startTime >= endTime) {
@@ -16,4 +16,12 @@ export const makeReservation = async (roomId, userId, startTime, endTime) => {
 
 export const getReservations = async (roomId) => {
     return await getAllReservations(roomId)
+}
+
+export const cancelReservation = async (reservationId) => {
+    const cancelled = await cancelReservationById(reservationId);
+    if (!cancelled) {
+        throw new Error('Reserva no eoncotrada o ya cancelada');
+    }
+    return true
 }

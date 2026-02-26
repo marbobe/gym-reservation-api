@@ -1,4 +1,4 @@
-import { makeReservation } from "../services/reservation.service.js";
+import { makeReservation, getReservations } from "../services/reservation.service.js";
 
 export const create = async (req, res) => {
     try {
@@ -18,3 +18,15 @@ export const create = async (req, res) => {
 
     }
 };
+
+export const getAll = async (req, res) => {
+    try {
+        const { roomId } = req.query;
+        const reservations = await getReservations(roomId);
+
+        res.status(200).json(reservations);
+
+    } catch (error) {
+        res.status(500).json({ error: error.message })
+    }
+}

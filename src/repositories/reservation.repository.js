@@ -20,3 +20,16 @@ export const createReservation = async (roomId, userId, startTime, endTime) => {
 
     return result.insertId;
 }
+
+export const getAllReservations = async (roomId) => {
+    if (!roomId) {
+        const [result] = await dbPool.query(`
+            SELECT * FROM reservations
+            `)
+        return result
+    }
+    const [result] = await dbPool.query(`
+        SELECT * FROM reservations WHERE room_id = ?
+        `, [roomId])
+    return result
+}

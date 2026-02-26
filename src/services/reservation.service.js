@@ -1,7 +1,7 @@
-import { checkOverlap, createReservation } from "../repositories/reservation.repository.js";
+import { checkOverlap, createReservation, getAllReservations } from "../repositories/reservation.repository.js";
 
 export const makeReservation = async (roomId, userId, startTime, endTime) => {
-    if (startTime > endTime) {
+    if (startTime >= endTime) {
         throw new Error('La hora de fin debe ser estrictamente posterior a la hora de inicio')
     }
 
@@ -12,4 +12,8 @@ export const makeReservation = async (roomId, userId, startTime, endTime) => {
     }
 
     return await createReservation(roomId, userId, startTime, endTime);
+}
+
+export const getReservations = async (roomId) => {
+    return await getAllReservations(roomId)
 }

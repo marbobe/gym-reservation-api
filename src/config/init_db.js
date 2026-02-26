@@ -32,8 +32,8 @@ export async function initDatabase() {
             )
         `);
 
-        console.log('Tablas creadas correctamente')
+        console.log('✅ Tablas creadas correctamente')
     } catch (error) {
-        console.log('Error en la creación de las tablas', error)
+        console.log('❌Error en la creación de las tablas', error)
     }
 }

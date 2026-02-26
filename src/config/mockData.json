@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "name": "Juan Perez",
+      "email": "juan.perez@test.com"
+    },
+    {
+      "name": "Ana Gomez",
+      "email": "ana.gomez@test.com"
+    }
+  ],
+  "rooms": [
+    {
+      "name": "Sala de Baile",
+      "capacity": 20
+    },
+    {
+      "name": "Sala de Yoga",
+      "capacity": 50
+    }
+  ]
+}

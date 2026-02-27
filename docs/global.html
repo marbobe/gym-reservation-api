@@ -142,7 +142,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="room.service.js.html">room.service.js</a>, <a href="room.service.js.html#line18">line 18</a>
+        <a href="services_room.service.js.html">services/room.service.js</a>, <a href="services_room.service.js.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -204,7 +204,379 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="reservation.service.js.html">reservation.service.js</a>, <a href="reservation.service.js.html#line42">line 42</a>
+        <a href="services_reservation.service.js.html">services/reservation.service.js</a>, <a href="services_reservation.service.js.html#line42">line 42</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="cancelReservationById"><span class="type-signature">(constant) </span>cancelReservationById<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Cancela una reserva cambiando su estado a 'cancelled'. (Soft Delete)
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="repositories_reservation.repository.js.html">repositories/reservation.repository.js</a>, <a href="repositories_reservation.repository.js.html#line72">line 72</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="checkOverlap"><span class="type-signature">(constant) </span>checkOverlap<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Comprueba si existe alguna reserva activa en una sala que se solape con el horario indicado.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="repositories_reservation.repository.js.html">repositories/reservation.repository.js</a>, <a href="repositories_reservation.repository.js.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="createReservation"><span class="type-signature">(constant) </span>createReservation<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Crea una nueva reserva en la base de datos.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="repositories_reservation.repository.js.html">repositories/reservation.repository.js</a>, <a href="repositories_reservation.repository.js.html#line34">line 34</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="createRoom"><span class="type-signature">(constant) </span>createRoom<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Crea una nueva sala en la base de datos.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="repositories_room.repository.js.html">repositories/room.repository.js</a>, <a href="repositories_room.repository.js.html#line18">line 18</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="getAllReservations"><span class="type-signature">(constant) </span>getAllReservations<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Obtiene la lista de reservas. Puede filtrar por sala y siempre incluye los datos de la sala asociada.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="repositories_reservation.repository.js.html">repositories/reservation.repository.js</a>, <a href="repositories_reservation.repository.js.html#line51">line 51</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="getAllRooms"><span class="type-signature">(constant) </span>getAllRooms<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Obtiene todas las salas registradas en el sistema.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="repositories_room.repository.js.html">repositories/room.repository.js</a>, <a href="repositories_room.repository.js.html#line7">line 7</a>
     </li></ul></dd>
     
 
@@ -266,7 +638,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="reservation.service.js.html">reservation.service.js</a>, <a href="reservation.service.js.html#line32">line 32</a>
+        <a href="services_reservation.service.js.html">services/reservation.service.js</a>, <a href="services_reservation.service.js.html#line32">line 32</a>
     </li></ul></dd>
     
 
@@ -328,7 +700,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="room.service.js.html">room.service.js</a>, <a href="room.service.js.html#line7">line 7</a>
+        <a href="services_room.service.js.html">services/room.service.js</a>, <a href="services_room.service.js.html#line7">line 7</a>
     </li></ul></dd>
     
 
@@ -390,7 +762,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="reservation.service.js.html">reservation.service.js</a>, <a href="reservation.service.js.html#line13">line 13</a>
+        <a href="services_reservation.service.js.html">services/reservation.service.js</a>, <a href="services_reservation.service.js.html#line13">line 13</a>
     </li></ul></dd>
     
 
@@ -424,13 +796,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addRoom">addRoom</a></li><li><a href="global.html#cancelReservation">cancelReservation</a></li><li><a href="global.html#getReservations">getReservations</a></li><li><a href="global.html#getRooms">getRooms</a></li><li><a href="global.html#makeReservation">makeReservation</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addRoom">addRoom</a></li><li><a href="global.html#cancelReservation">cancelReservation</a></li><li><a href="global.html#cancelReservationById">cancelReservationById</a></li><li><a href="global.html#checkOverlap">checkOverlap</a></li><li><a href="global.html#createReservation">createReservation</a></li><li><a href="global.html#createRoom">createRoom</a></li><li><a href="global.html#getAllReservations">getAllReservations</a></li><li><a href="global.html#getAllRooms">getAllRooms</a></li><li><a href="global.html#getReservations">getReservations</a></li><li><a href="global.html#getRooms">getRooms</a></li><li><a href="global.html#makeReservation">makeReservation</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Fri Feb 27 2026 11:31:46 GMT+0100 (hora estándar de Europa central)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Fri Feb 27 2026 16:56:17 GMT+0100 (hora estándar de Europa central)
 </footer>
 
 <script> prettyPrint(); </script>

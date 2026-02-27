@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: services/room.service.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,40 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: services/room.service.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { createRoom, getAllRooms } from "../repositories/room.repository.js";
 
+/**
+ * Obtiene todas las salas disponibles en el sistema.
+ * @returns {Promise&lt;Array>} Devuelve un array de objetos de tipo sala.
+ */
+export const getRooms = async () => {
+    return await getAllRooms();
+}
 
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+/**
+ * Registra una nueva sala en el gimnasio.
+ * @param {string} name - Nombre descriptivo de la sala (Ej: 'Sala Yoga').
+ * @param {number} capacity - Aforo máximo de la sala. Debe ser mayor a 0.
+ * @throws {Error} Si la capacidad es menor a 1.
+ * @returns {Promise&lt;number>} Devuelve el ID numérico de la sala recién creada.
+ */
+export const addRoom = async (name, capacity) => {
+    if (capacity &lt; 1) {
+        throw new Error("La capacidad debe ser mayor a 0")
+    }
+    return await createRoom(name, capacity);
+}</code></pre>
+        </article>
+    </section>
 
 
 

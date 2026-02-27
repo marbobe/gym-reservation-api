@@ -1,0 +1,45 @@
+
+// Prisma schema file,
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// --- DEFINICIÓN DE TABLAS (MODELOS) ---
+
+// Modelo Room 
+model Room {
+  id        Int      @id @default(autoincrement()) // Primary Key
+  name      String   @db.VarChar(100)
+  capacity  Int
+  createdAt DateTime @default(now()) @map("created_at")
+
+  // Relación: Una sala tiene muchas reservas (1:N)
+  reservations Reservation[]
+
+  // el nombre exacto de la tabla en MySQL
+  @@map("rooms")
+}
+
+// Modelo Reservation
+model Reservation {
+  id        Int      @id @default(autoincrement())
+  roomId    Int      @map("room_id")
+  userId    Int      @map("user_id")
+  startTime DateTime @map("start_time")
+  endTime   DateTime @map("end_time")
+  status    String   @default("active") @db.VarChar(20)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  // Relación: Esta reserva pertenece a una Sala (N:1)
+  // Foreign Key (roomId) apuntando al 'id' de Room
+  room Room @relation(fields: [roomId], references: [id])
+
+  @@map("reservations")
+}

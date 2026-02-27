@@ -51,26 +51,24 @@ router.get('/', getAll);
  *           schema:
  *             type: object
  *             required:
- *               - userEmail
  *               - roomId
  *               - userId
  *               - startTime
  *               - endTime
  *             properties:
- *               userEmail:
- *                 type: string
- *                 example: ana.gomez@test.com
  *               roomId:
  *                 type: integer
  *                 example: 2
  *               userId:
  *                 type: integer
  *                 example: 1
-*               startTime:
- *                 type: date
+ *               startTime:
+ *                 type: string
+ *                 format: date-time
  *                 example: 2026-03-01 12:06:00
  *               endTime:
- *                 type: date
+ *                 type: string
+ *                 format: date-time
  *                 example: 2026-03-01 12:07:00
  *     responses:
  *       201:

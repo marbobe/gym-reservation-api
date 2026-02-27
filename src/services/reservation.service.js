@@ -42,7 +42,7 @@ export const getReservations = async (roomId) => {
 export const cancelReservation = async (reservationId) => {
     const cancelled = await cancelReservationById(reservationId);
     if (!cancelled) {
-        throw new Error('Reserva no eoncotrada o ya cancelada');
+        throw new Error('Reserva no encotrada o ya cancelada');
     }
     return true
 }

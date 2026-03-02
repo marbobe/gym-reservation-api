@@ -5,18 +5,17 @@ Una API REST robusta y profesional para la gestión de reservas de salas en un g
 ## Características y Tecnologías
 
 #### _Backend & Core_
-
-**Node.js & Express**: Entorno de ejecución y framework web.
-**Arquitectura en Capas**: Separación clara entre Rutas, Controladores, Servicios y Repositorios.
-**Prisma ORM**: Gestión de base de datos MySQL con tipado seguro y migraciones.
-**MySQ**L: Base de datos relacional para persistencia de datos.
+- **Node.js & Express**: Entorno de ejecución y framework web.
+- **Arquitectura en Capas**: Separación clara entre Rutas, Controladores, Servicios y Repositorios.
+- **Prisma ORM**: Gestión de base de datos MySQL con tipado seguro y migraciones.
+- **MySQ**L: Base de datos relacional para persistencia de datos.
 
 #### _Calidad y Documentación_
 
-**Swagger / OpenAPI**: Documentación interactiva de la API accesible desde el navegador.
-**JSDoc**: Documentación interna del código para mejorar la experiencia de desarrollo (DX).
-**Vitest**: Suite de tests unitarios para asegurar la lógica de negocio en los servicios.
-**CORS**: Configuración de seguridad para permitir conexiones desde clientes externos.
+- **Swagger / OpenAPI**: Documentación interactiva de la API accesible desde el navegador.
+- **JSDoc**: Documentación interna del código para mejorar la experiencia de desarrollo (DX).
+- **Vitest**: Suite de tests unitarios para asegurar la lógica de negocio en los servicios.
+- **CORS**: Configuración de seguridad para permitir conexiones desde clientes externos.
 
 ## Instalación y Configuración
 

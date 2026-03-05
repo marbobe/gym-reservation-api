@@ -3,17 +3,26 @@
     {
       "id": 1,
       "name": "Sala de Baile",
-      "capacity": 20
+      "pricePerHour": 15.00,
+      "capacity": 15,
+      "description": "Sala amplia con espejos en todas las paredes y suelo de madera preparado para danza y coreografías.",
+      "imageUrl": "https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?q=80&w=1000&auto=format&fit=crop"
     },
     {
-      "id": 2,
+      "id": 2, 
       "name": "Sala de Spinning",
-      "capacity": 15
+      "capacity": 15,
+      "pricePerHour": 25.50,
+      "description": "Equipada con 15 bicicletas estáticas de última generación, luces de ambiente y sistema de sonido envolvente.",
+      "imageUrl": "https://plus.unsplash.com/premium_photo-1746192629860-8a56ee2b9759?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
-      "id": 3,
+      "id": 3, 
       "name": "Estudio de Yoga",
-      "capacity": 10
+      "capacity": 20,
+      "pricePerHour": 12.00,
+      "description": "Un espacio tranquilo y climatizado, perfecto para meditación, pilates y yoga. Incluye esterillas.",
+      "imageUrl": "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?q=80&w=1000&auto=format&fit=crop"
     }
   ],
   "reservations": [

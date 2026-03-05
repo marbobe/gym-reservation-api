@@ -50,13 +50,24 @@ router.get('/', getAll);
  *             required:
  *               - name
  *               - capacity
+ *               - pricePerHour
  *             properties:
  *               name:
  *                 type: string
- *                 example: Sala de Yoga
+ *                 example: Sala de Fitness
  *               capacity:
  *                 type: integer
- *                 example: 50
+ *                 example: 35
+ *               pricePerHour:
+ *                 type: number
+ *                 format: float
+ *                 example: 18
+ *               description:
+ *                 type: string
+ *                 example: Un espacio climatizado y sistema de sonido de ambiente. Incluye esterillas y pesas.
+ *               imageUrl:
+ *                 type: string
+ *                 example: https://plus.unsplash.com/premium_photo-1666736569193-6b2a79b6e71a?q=80&w=869&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
  *     responses:
  *       201:
  *         description: Sala creada correctamente

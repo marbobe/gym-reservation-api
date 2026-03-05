@@ -15,11 +15,14 @@ export const getAllRooms = async () => {
  * @param {number} capacity - Capacidad máxima de la sala.
  * @returns {Promise<number>} El ID de la sala recién insertada.
  */
-export const createRoom = async (name, capacity) => {
+export const createRoom = async (name, capacity, pricePerHour, desecription, imageUrl) => {
     const newRoom = await prisma.room.create({
         data: {
             name: name,
-            capacity: capacity
+            capacity: capacity,
+            pricePerHour: pricePerHour,
+            description: desecription,
+            imageUrl: imageUrl
         }
     });
     return newRoom.id;

@@ -36,18 +36,33 @@ describe('Room Service', () => {
             expect(roomRepository.createRoom).not.toHaveBeenCalled();
         })
 
+        it('Debería lanzar un error si el precio es negativo', async () => {
+            const name = "Sala de yoga";
+            const capacity = 2
+            const pricePerHour = -1;
+
+            await expect(addRoom(name, capacity, pricePerHour))
+                .rejects
+                .toThrow("El precio debe ser positivo");
+
+            expect(roomRepository.createRoom).not.toHaveBeenCalled();
+        })
+
         it('Debería registrar una nueva sala', async () => {
             const name = "Sala de Baile";
             const capacity = 20;
-            const mockInsertId = 33;
+            const pricePerHour = 15;
+            const description = "Descripción de la sala";
+            const imageUrl = "Dirección de la imagen"
+            const mockInsertId = 53;
 
             vi.mocked(roomRepository.createRoom).mockResolvedValue(mockInsertId)
 
-            const createdRoom = await addRoom(name, capacity);
+            const createdRoom = await addRoom(name, capacity, pricePerHour, description, imageUrl);
 
             expect(createdRoom).toEqual(mockInsertId)
             expect(roomRepository.createRoom).toHaveBeenCalledOnce();
-            expect(roomRepository.createRoom).toHaveBeenCalledWith(name, capacity);
+            expect(roomRepository.createRoom).toHaveBeenCalledWith(name, capacity, pricePerHour, description, imageUrl);
         });
 
     })

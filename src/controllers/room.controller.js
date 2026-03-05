@@ -15,8 +15,8 @@ export const getAll = async (req, res) => {
 export const create = async (req, res) => {
 
     try {
-        const { name, capacity } = req.body;
-        const newRoomId = await addRoom(name, capacity);
+        const { name, capacity, pricePerHour, description, imageUrl } = req.body;
+        const newRoomId = await addRoom(name, capacity, pricePerHour, description, imageUrl);
 
         res.status(201).json({
             message: 'Sala creada correctamente',

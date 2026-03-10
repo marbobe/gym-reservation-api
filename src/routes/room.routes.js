@@ -170,6 +170,6 @@ router.get('/:id', getById);
  *       404:
  *         description: Sala no encontrada
  */
-router.patch('/:id/delete', softDelete);
+router.patch('/:id', softDelete);
 
 export default router;

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { getRooms, addRoom } from './room.service.js';
+import { getRooms, addRoom, editRoom, getRoom } from './room.service.js';
 
 import * as roomRepository from '../repositories/room.repository.js';
 
@@ -65,6 +65,48 @@ describe('Room Service', () => {
             expect(roomRepository.createRoom).toHaveBeenCalledWith(name, capacity, pricePerHour, description, imageUrl);
         });
 
+    })
+
+    describe('editRoom', () => {
+        it('Debería editar la sala', async () => {
+            const roomId = 1;
+            const dataToUpdate = { pricePerHour: 56 };
+            const mockUpdatedRoom = {
+                id: 1,
+                name: "Sala de Baile",
+                capacity: 20,
+                pricePerHour: 56
+            };
+
+            vi.mocked(roomRepository.editRoomById).mockResolvedValue(mockUpdatedRoom);
+
+            const editedRoom = await editRoom(roomId, dataToUpdate);
+
+            expect(editedRoom).toEqual(mockUpdatedRoom);
+            expect(roomRepository.editRoomById).toHaveBeenCalledOnce();
+            expect(roomRepository.editRoomById).toHaveBeenCalledWith(roomId, dataToUpdate);
+        })
+    })
+
+    describe('getRoom', () => {
+        it('Debería encontrar la sala por su id', async () => {
+            const roomId = 1;
+            const mockRoom = {
+                id: 1,
+                name: "Sala de Baile",
+                capacity: 20,
+                pricePerHour: 15
+            }
+
+            vi.mocked(roomRepository.getRoomById).mockResolvedValue(mockRoom);
+
+            const room = await getRoom(roomId);
+
+            expect(room).toEqual(mockRoom);
+            expect(roomRepository.getRoomById).toHaveBeenCalledOnce();
+            expect(roomRepository.getRoomById).toHaveBeenCalledWith(roomId);
+
+        })
     })
 
 });

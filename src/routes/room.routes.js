@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { create, getAll } from "../controllers/room.controller.js";
+import { create, getAll, edit, getById, softDelete } from "../controllers/room.controller.js";
 
 const router = Router();
 
@@ -75,5 +75,101 @@ router.get('/', getAll);
  *         description: Datos inválidos
  */
 router.post('/', create);
+
+/**
+ * @swagger
+ * /api/v1/rooms/{id}:
+ *   patch:
+ *     summary: Edita una sala
+ *     description: Edita los datos de una sala ya existente. Solo necesitas enviar los campos que quieres cambiar.
+ *     tags:
+ *       - Rooms
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: El ID de la sala a editar
+ *         schema:
+ *           type: integer
+ *         example: 1
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               pricePerHour:
+ *                 type: number
+ *                 format: float
+ *                 example: 18
+ *     responses:
+ *       200:
+ *         description: Sala editada correctamente
+ *       400:
+ *         description: Datos inválidos o error en la petición
+ *       404:
+ *         description: La sala que intentas editar no existe
+ */
+router.patch('/:id', edit);
+
+/**
+ * @swagger
+ * /api/v1/rooms/{id}:
+ *   get:
+ *     summary: Obtiene una sala
+ *     description: Devuelve una sala en función del id.
+ *     tags:
+ *       - Rooms
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: El ID de la sala a buscar
+ *         schema:
+ *           type: integer
+ *         example: 1
+ *     responses:
+ *       200:
+ *         description: Sala encontrada
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: integer
+ *                   example: 1
+ *                 name:
+ *                   type: string
+ *                   example: Sala de Baile
+ *                 capacity:
+ *                   type: integer
+ *                   example: 20
+ */
+router.get('/:id', getById);
+
+/**
+ * @swagger
+ * /api/v1/rooms/{id}/delete:
+ *   patch:
+ *     summary: elimina una sala
+ *     description: elimina una sala existente por su ID.
+ *     tags:
+ *       - Rooms
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         example: 1
+ *     responses:
+ *       200:
+ *         description: Sala eliminada correctamente
+ *       404:
+ *         description: Sala no encontrada
+ */
+router.patch('/:id/delete', softDelete);
 
 export default router;

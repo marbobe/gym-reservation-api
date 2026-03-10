@@ -21,6 +21,7 @@ model Room {
   pricePerHour  Float @map("price_per_hour")
   description   String? @db.Text
   imageUrl      String? @map("image_url")
+  status        String   @default("active") @db.VarChar(20)
   createdAt     DateTime @default(now()) @map("created_at")
 
   // Relación: Una sala tiene muchas reservas (1:N)

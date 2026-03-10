@@ -1,4 +1,4 @@
-import { createRoom, getAllRooms } from "../repositories/room.repository.js";
+import { createRoom, getAllRooms, editRoomById, getRoomById, deleteRoomById } from "../repositories/room.repository.js";
 
 /**
  * Obtiene todas las salas disponibles en el sistema.
@@ -6,6 +6,15 @@ import { createRoom, getAllRooms } from "../repositories/room.repository.js";
  */
 export const getRooms = async () => {
     return await getAllRooms();
+}
+
+/**
+ * Obtiene una sala por id
+ * @param  {string | number} roomId - el ID de la sala
+ * @returns {Promise<Object>} Devuelve el objeto de la sala
+ */
+export const getRoom = async (roomId) => {
+    return await getRoomById(roomId);
 }
 
 /**
@@ -27,4 +36,30 @@ export const addRoom = async (name, capacity, pricePerHour, description, imageUr
         throw new Error("El precio debe ser positivo")
     }
     return await createRoom(name, capacity, pricePerHour, description, imageUrl);
+}
+
+
+/**
+ * Modifica una sala ya creada
+ * @param {string | number} roomId - el ID de la sala a editar
+ * @param {Object} dataToUpdate - Objeto con datos a actualizar
+ * @returns {Promise<Object>} - El objeto de la sala con los datos actualizados
+ */
+export const editRoom = async (roomId, dataToUpdate) => {
+    return await editRoomById(roomId, dataToUpdate);
+}
+
+/**
+ * Elimina una sala con soft delete.
+ * @param {number} roomId - Id de la sala a eliminar.
+ * @throws {Error} Si la sala no existe o ya estaba cancelada previamente.
+ * @returns {Promise<boolean>} Devuelve true si el estado se cambió correctamente.
+ */
+export const deleteRoom = async (roomId) => {
+    const deleted = await deleteRoomById(roomId);
+    if (!deleted) {
+        throw new Error('Reserva no encotrada o ya cancelada');
+    }
+
+    return true
 }

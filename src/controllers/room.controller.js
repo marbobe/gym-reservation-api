@@ -73,11 +73,10 @@ export const edit = async (req, res) => {
 export const softDelete = async (req, res) => {
     try {
         const { id } = req.params;
-        const roomDeleted = await deleteRoom(id);
+        await deleteRoom(id);
 
         res.status(200).json({
             message: `Sala con id: ${id}, eliminada correctamente`,
-            room: roomDeleted
         })
     } catch (error) {
         res.status(400).json({ error: error.message })

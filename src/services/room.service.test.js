@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { getRooms, addRoom, editRoom, getRoom } from './room.service.js';
+import { getRooms, addRoom, editRoom, getRoom, deleteRoom } from './room.service.js';
 
 import * as roomRepository from '../repositories/room.repository.js';
 
@@ -109,4 +109,27 @@ describe('Room Service', () => {
         })
     })
 
+    describe('deleteRoom', () => {
+        it('Debería lanzar un error si la sala no se ha encontrado o ya estaba eliminada', async () => {
+            const roomId = 2;
+            vi.mocked(roomRepository.deleteRoomById).mockResolvedValue(0);
+
+            const deleted = await expect(deleteRoom(roomId))
+                .rejects
+                .toThrow('Sala no encotrada o ya cancelada')
+
+            expect(roomRepository.deleteRoomById).toHaveBeenCalledOnce();
+        })
+
+        it('Debería devolver true si la Sala se elimina correctamente', async () => {
+            const roomId = 1;
+
+            vi.mocked(roomRepository.deleteRoomById).mockResolvedValue(roomId);
+
+            const deleted = await deleteRoom(roomId);
+
+            expect(deleted).toBe(true);
+            expect(roomRepository.deleteRoomById).toHaveBeenCalledOnce();
+        })
+    })
 });

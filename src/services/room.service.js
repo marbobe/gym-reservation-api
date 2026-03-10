@@ -58,7 +58,7 @@ export const editRoom = async (roomId, dataToUpdate) => {
 export const deleteRoom = async (roomId) => {
     const deleted = await deleteRoomById(roomId);
     if (!deleted) {
-        throw new Error('Reserva no encotrada o ya cancelada');
+        throw new Error('Sala no encotrada o ya cancelada');
     }
 
     return true

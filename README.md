@@ -1,5 +1,12 @@
 # Gym Reservation API 
 
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)
+![Vitest](https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
+
 Una API REST robusta y profesional para la gestión de reservas de salas en un gimnasio. Este proyecto ha sido desarrollado siguiendo las mejores prácticas de arquitectura de software, separación de responsabilidades y calidad de código.
 
 ## Características y Tecnologías
@@ -86,10 +93,10 @@ npm run test
 
 ## Arquitectura del Proyecto
 
-**Routes**: Define los endpoints y conecta con los controladores.
-**Controllers**: Gestiona las peticiones HTTP y extrae los datos necesarios.
-**Services**: Contiene la lógica de negocio (validaciones de fecha, solapamientos, etc.). Es la capa protegida por tests.
-**Repositories**: Capa de acceso a datos pura usando Prisma Client.
+- **Routes**: Define los endpoints y conecta con los controladores.
+- **Controllers**: Gestiona las peticiones HTTP y extrae los datos necesarios.
+- **Services**: Contiene la lógica de negocio (validaciones de fecha, solapamientos, etc.). Es la capa protegida por tests.
+- **Repositories**: Capa de acceso a datos pura usando Prisma Client.
 
 ## Endpoints Principales
 
@@ -97,6 +104,10 @@ npm run test
 ```GET /api/v1/rooms - Obtener todas las salas.```
 
 ```POST /api/v1/rooms - Registrar una nueva sala.```
+
+```PATCH /api/v1/rooms/:id - Editar los datos de una sala existente.```
+
+```DELETE /api/v1/rooms/:id - Eliminar una sala (Soft Delete).```
 
 #### Reservas (Reservations)
 ```GET /api/v1/reservations - Listar reservas (con filtro opcional por sala).```

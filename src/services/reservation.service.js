@@ -1,4 +1,4 @@
-import { checkOverlap, createReservation, getAllReservations, cancelReservationById } from "../repositories/reservation.repository.js";
+import { checkOverlap, createReservation, getAllReservations, cancelReservationById, getReservationById, editReservationById } from "../repositories/reservation.repository.js";
 
 
 /**
@@ -25,12 +25,63 @@ export const makeReservation = async (roomId, userId, startTime, endTime) => {
 }
 
 /**
+ * Obtiene una reserva por id
+ * @param {string | number} reservationId 
+ * @returns {Promise<Object>} Devuelve el objeto de la reserva
+ */
+export const getReservation = async (reservationId) => {
+    return await getReservationById(reservationId);
+}
+
+/**
  * Obtiene la lista de reservas.
  * @param {number} [roomId] - (Opcional) ID de la sala para filtrar los resultados.
  * @returns {Promise<Array>} Devuelve un array con todas las reservas (o las filtradas).
  */
 export const getReservations = async (roomId) => {
     return await getAllReservations(roomId)
+}
+
+/**
+ * Modifica una reserva ya creada
+ * @param {string | number} reservationId - ID de la reserva a editar
+ * @param {Object} dataToUpdate - Objeto con los datos a actualizar
+ * @returns {Promise<Object>} - El objeto de la sala con los datos actualizados
+ */
+export const editReservation = async (reservationId, dataToUpdate) => {
+
+    const existingReservation = await getReservationById(reservationId);
+
+    if (!existingReservation) {
+        throw new Error('La reserva que intentas editar no existe.');
+    }
+
+    const targetRoomId = dataToUpdate.roomId || existingReservation.roomId;
+    const finalStartTime = dataToUpdate.startTime ? new Date(dataToUpdate.startTime) : existingReservation.startTime;
+    const finalEndTime = dataToUpdate.endTime ? new Date(dataToUpdate.endTime) : existingReservation.endTime;
+
+
+    if (dataToUpdate.startTime || dataToUpdate.endTime || dataToUpdate.roomId) {
+
+        if (isNaN(finalStartTime.getTime()) || isNaN(finalEndTime.getTime())) {
+            throw new Error('Las fechas proporcionadas no tienen un formato válido.');
+        }
+
+        if (finalStartTime >= finalEndTime) {
+            throw new Error('La hora de fin debe ser estrictamente posterior a la hora de inicio')
+        }
+
+        const isOverlap = await checkOverlap(targetRoomId, finalStartTime, finalEndTime, reservationId);
+
+        if (isOverlap) {
+            throw new Error('La sala ya está reservada en ese horario. Por favor, elige otro.');
+        }
+    }
+
+    if (dataToUpdate.startTime) dataToUpdate.startTime = finalStartTime;
+    if (dataToUpdate.endTime) dataToUpdate.endTime = finalEndTime;
+
+    return await editReservationById(reservationId, dataToUpdate);
 }
 
 /**

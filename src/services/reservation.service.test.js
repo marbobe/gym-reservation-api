@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { makeReservation, getReservations, cancelReservation } from './reservation.service.js';
+import { makeReservation, getReservations, getReservation, editReservation, cancelReservation } from './reservation.service.js';
 
 import * as reservationRepository from '../repositories/reservation.repository.js';
 
@@ -83,6 +83,25 @@ describe('Reservation Service', () => {
             expect(reservationRepository.getAllReservations).toHaveBeenCalledOnce();
         });
     });
+
+    describe('getReservation', () => {
+        it('Debería devolver el objeto de la reserva con el id filtrado.', async () => {
+            const reservationId = 3;
+            const mockReservation = { id: 3, roomId: 1 }
+            vi.mocked(reservationRepository.getReservationById).mockResolvedValue(mockReservation);
+
+            const reservation = await getReservation(reservationId);
+
+            expect(reservation).toEqual(mockReservation);
+            expect(reservationRepository.getReservationById).toHaveBeenCalledOnce();
+            expect(reservationRepository.getReservationById).toHaveBeenCalledWith(reservationId);
+        })
+
+    })
+
+    describe('editReservation', () => {
+        it('')
+    })
 
     describe('cancelReservation', () => {
         it('Debería lanzar un error si la reserva no se ha encontrado o ya estaba cancelada', async () => {

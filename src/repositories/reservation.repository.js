@@ -5,17 +5,24 @@ import { prisma } from '../config/prisma.js';
  * @param {number|string} roomId - ID de la sala.
  * @param {string} startTime - Fecha y hora de inicio de la nueva reserva.
  * @param {string} endTime - Fecha y hora de fin de la nueva reserva.
+ * @param {number|string} [excludeReservationId] - (Opcional) ID de una reserva a ignorar (útil al editar).
  * @returns {Promise<boolean>} - Devuelve `true` si hay solapamiento, `false` si la sala está libre.
  */
-export const checkOverlap = async (roomId, startTime, endTime) => {
+export const checkOverlap = async (roomId, startTime, endTime, excludeReservationId = null) => {
+
+    const excludeCondition = excludeReservationId ? { id: { not: parseInt(excludeReservationId) } } : {};
+
+    const start = new Date(startTime);
+    const end = new Date(endTime);
 
     const overlap = await prisma.reservation.findFirst({
         where: {
-            roomId: roomId,
+            roomId: parseInt(roomId),
             status: { not: 'cancelled' },
+            ...excludeCondition,
             AND: [
-                { startTime: { lt: new Date(endTime) } },
-                { endTime: { gt: new Date(startTime) } }
+                { startTime: { lt: end } },
+                { endTime: { gt: start } }
             ]
         }
     });
@@ -44,6 +51,17 @@ export const createReservation = async (roomId, userId, startTime, endTime) => {
 };
 
 /**
+ * Obtener una reserva por el id
+ * @param {string|number} reservationId -id de la reserva
+ * @returns {Promise<Object|null>} Devuelve el objeto de la reserva, o null si no existe.
+ */
+export const getReservationById = async (reservationId) => {
+    return await prisma.reservation.findUnique({
+        where: { id: parseInt(reservationId) }
+    });
+}
+
+/**
  * Obtiene la lista de reservas. Puede filtrar por sala y siempre incluye los datos de la sala asociada.
  * @param {number|string} [roomId] - (Opcional) ID de la sala para filtrar.
  * @returns {Promise<Array<Object>>} - Lista de reservas con la información de la sala (JOIN).
@@ -63,6 +81,20 @@ export const getAllReservations = async (roomId) => {
         }
     });
 };
+
+/**
+ * Edita los datos de una reserva existente
+ * @param {string|number} reservationId - el Id de la reserva a editar
+ * @param {Object} dataToUpdate - Objeto con los datos a actualizar
+ * @returns 
+ */
+export const editReservationById = async (reservationId, dataToUpdate) => {
+
+    return await prisma.reservation.update({
+        where: { id: parseInt(reservationId) },
+        data: dataToUpdate
+    });
+}
 
 /**
  * Cancela una reserva cambiando su estado a 'cancelled'. (Soft Delete)
@@ -86,3 +118,5 @@ export const cancelReservationById = async (reservationId) => {
         throw error;
     }
 }
+
+

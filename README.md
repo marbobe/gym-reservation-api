@@ -103,6 +103,8 @@ npm run test
 #### Salas (Rooms)
 ```GET /api/v1/rooms - Obtener todas las salas.```
 
+```GET /api/v1/rooms/:id - Obtener una sala por id```
+
 ```POST /api/v1/rooms - Registrar una nueva sala.```
 
 ```PATCH /api/v1/rooms/:id - Editar los datos de una sala existente.```
@@ -112,6 +114,10 @@ npm run test
 #### Reservas (Reservations)
 ```GET /api/v1/reservations - Listar reservas (con filtro opcional por sala).```
 
+```GET /api/v1/reservations/:id - Obtiene una reserva por id```
+
 ```POST /api/v1/reservations - Crear una reserva (valida disponibilidad de horario).```
+
+```PATCH /api/v1/reservations/:id - Edita los datos de una reserva existente```
 
 ```PATCH /api/v1/reservations/:id - Cancelar una reserva (Soft Delete).```

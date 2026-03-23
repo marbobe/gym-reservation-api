@@ -14,7 +14,7 @@
       "capacity": 15,
       "pricePerHour": 25.50,
       "description": "Equipada con 15 bicicletas estáticas de última generación, luces de ambiente y sistema de sonido envolvente.",
-      "imageUrl": "https://plus.unsplash.com/premium_photo-1746192629860-8a56ee2b9759?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      "imageUrl": "https://plus.unsplash.com/premium_photo-1746192629860-8a56ee2b9759?q=80&w=870&auto=format&fit=crop"
     },
     {
       "id": 3, 
@@ -23,43 +23,140 @@
       "pricePerHour": 12.00,
       "description": "Un espacio tranquilo y climatizado, perfecto para meditación, pilates y yoga. Incluye esterillas.",
       "imageUrl": "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?q=80&w=1000&auto=format&fit=crop"
+    },
+    {
+      "id": 4, 
+      "name": "Sala de Pilates",
+      "capacity": 8,
+      "pricePerHour": 22.00,
+      "description": "Equipada con máquinas Reformer, Cadillac y barriles. Luz natural y ambiente relajado.",
+      "imageUrl": "https://plus.unsplash.com/premium_photo-1737321091046-ae81c7360cf0?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 5, 
+      "name": "Ring de Boxeo",
+      "capacity": 10,
+      "pricePerHour": 18.00,
+      "description": "Ring oficial, sacos pesados, peras de velocidad y zona de calentamiento con tatami.",
+      "imageUrl": "https://plus.unsplash.com/premium_photo-1721755999925-8b59f881c6fc?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 6, 
+      "name": "Zona de Crossfit",
+      "capacity": 25,
+      "pricePerHour": 20.00,
+      "description": "Box equipado con racks, pesas olímpicas, kettlebells, cuerdas y cajones pliométricos.",
+      "imageUrl": "https://images.unsplash.com/photo-1536922246289-88c42f957773?q=80&w=904&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      "id": 7, 
+      "name": "Piscina de Aquagym",
+      "capacity": 20,
+      "pricePerHour": 18.50,
+      "description": "Piscina climatizada de poca profundidad equipada con churros, pesas de agua y cinturones de flotación. Ideal para gimnasia acuática de bajo impacto.",
+      "imageUrl": "https://images.unsplash.com/photo-1541689186060-3b08be2fd22f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "status": "deleted"
     }
   ],
   "reservations": [
     {
-      "roomId": 1,
-      "userId": 101,
-      "startTime": "2026-03-01T10:00:00Z",
-      "endTime": "2026-03-01T11:30:00Z",
-      "status": "active"
+      "id": 1, "roomId": 1, "userId": 101, "startTime": "2026-03-24T10:00:00Z", "endTime": "2026-03-24T11:30:00Z", "status": "active"
     },
     {
-      "roomId": 2,
-      "userId": 102,
-      "startTime": "2026-03-02T18:00:00Z",
-      "endTime": "2026-03-02T19:00:00Z",
-      "status": "active"
+      "id": 2, "roomId": 4, "userId": 102, "startTime": "2026-03-26T18:00:00Z", "endTime": "2026-03-26T19:00:00Z", "status": "active"
     },
     {
-      "roomId": 3,
-      "userId": 103,
-      "startTime": "2026-03-03T08:00:00Z",
-      "endTime": "2026-03-03T09:30:00Z",
-      "status": "cancelled"
+      "id": 3, "roomId": 3, "userId": 103, "startTime": "2026-03-28T08:00:00Z", "endTime": "2026-03-28T09:30:00Z", "status": "cancelled"
     },
     {
-      "roomId": 1,
-      "userId": 104,
-      "startTime": "2026-03-04T14:00:00Z",
-      "endTime": "2026-03-04T15:30:00Z",
-      "status": "active"
+      "id": 4, "roomId": 5, "userId": 104, "startTime": "2026-03-30T14:00:00Z", "endTime": "2026-03-30T15:30:00Z", "status": "active"
     },
     {
-      "roomId": 2,
-      "userId": 105,
-      "startTime": "2026-03-05T20:00:00Z",
-      "endTime": "2026-03-05T21:00:00Z",
-      "status": "active"
+      "id": 5, "roomId": 2, "userId": 105, "startTime": "2026-04-05T20:00:00Z", "endTime": "2026-04-05T21:00:00Z", "status": "active"
+    },
+    {
+      "id": 6, "roomId": 6, "userId": 106, "startTime": "2026-04-12T09:00:00Z", "endTime": "2026-04-12T11:00:00Z", "status": "active"
+    },
+    {
+      "id": 7, "roomId": 4, "userId": 107, "startTime": "2026-04-20T17:30:00Z", "endTime": "2026-04-20T19:00:00Z", "status": "active"
+    },
+    {
+      "id": 8, "roomId": 1, "userId": 108, "startTime": "2026-04-28T16:00:00Z", "endTime": "2026-04-28T18:00:00Z", "status": "cancelled"
+    },
+    {
+      "id": 9, "roomId": 3, "userId": 109, "startTime": "2026-05-02T10:00:00Z", "endTime": "2026-05-02T11:00:00Z", "status": "active"
+    },
+    {
+      "id": 10, "roomId": 5, "userId": 110, "startTime": "2026-05-15T19:00:00Z", "endTime": "2026-05-15T20:30:00Z", "status": "active"
+    },
+    {
+      "id": 11, "roomId": 6, "userId": 111, "startTime": "2026-05-22T07:00:00Z", "endTime": "2026-05-22T08:30:00Z", "status": "active"
+    },
+    {
+      "id": 12, "roomId": 2, "userId": 112, "startTime": "2026-06-10T18:00:00Z", "endTime": "2026-06-10T19:00:00Z", "status": "active"
+    },
+    {
+      "id": 13, "roomId": 4, "userId": 113, "startTime": "2026-06-18T10:30:00Z", "endTime": "2026-06-18T11:30:00Z", "status": "active"
+    },
+    {
+      "id": 14, "roomId": 1, "userId": 114, "startTime": "2026-06-25T16:00:00Z", "endTime": "2026-06-25T18:00:00Z", "status": "cancelled"
+    },
+    {
+      "id": 15, "roomId": 3, "userId": 115, "startTime": "2026-07-04T09:00:00Z", "endTime": "2026-07-04T10:30:00Z", "status": "active"
+    },
+    {
+      "id": 16, "roomId": 5, "userId": 116, "startTime": "2026-07-14T19:00:00Z", "endTime": "2026-07-14T21:00:00Z", "status": "active"
+    },
+    {
+      "id": 17, "roomId": 6, "userId": 101, "startTime": "2026-07-29T18:30:00Z", "endTime": "2026-07-29T20:00:00Z", "status": "active"
+    },
+    {
+      "id": 18, "roomId": 4, "userId": 102, "startTime": "2026-08-08T11:00:00Z", "endTime": "2026-08-08T12:00:00Z", "status": "active"
+    },
+    {
+      "id": 19, "roomId": 2, "userId": 103, "startTime": "2026-08-16T17:00:00Z", "endTime": "2026-08-16T18:30:00Z", "status": "cancelled"
+    },
+    {
+      "id": 20, "roomId": 1, "userId": 104, "startTime": "2026-08-21T10:00:00Z", "endTime": "2026-08-21T12:00:00Z", "status": "active"
+    },
+    {
+      "id": 21, "roomId": 3, "userId": 105, "startTime": "2026-09-05T08:00:00Z", "endTime": "2026-09-05T09:00:00Z", "status": "active"
+    },
+    {
+      "id": 22, "roomId": 5, "userId": 106, "startTime": "2026-09-15T20:00:00Z", "endTime": "2026-09-15T21:00:00Z", "status": "active"
+    },
+    {
+      "id": 23, "roomId": 6, "userId": 107, "startTime": "2026-09-28T07:30:00Z", "endTime": "2026-09-28T09:00:00Z", "status": "active"
+    },
+    {
+      "id": 24, "roomId": 4, "userId": 108, "startTime": "2026-10-10T12:00:00Z", "endTime": "2026-10-10T13:30:00Z", "status": "active"
+    },
+    {
+      "id": 25, "roomId": 2, "userId": 109, "startTime": "2026-10-20T18:00:00Z", "endTime": "2026-10-20T19:00:00Z", "status": "cancelled"
+    },
+    {
+      "id": 26, "roomId": 1, "userId": 110, "startTime": "2026-10-31T16:30:00Z", "endTime": "2026-10-31T18:00:00Z", "status": "active"
+    },
+    {
+      "id": 27, "roomId": 3, "userId": 111, "startTime": "2026-11-06T09:00:00Z", "endTime": "2026-11-06T10:00:00Z", "status": "active"
+    },
+    {
+      "id": 28, "roomId": 5, "userId": 112, "startTime": "2026-11-15T19:30:00Z", "endTime": "2026-11-15T21:00:00Z", "status": "active"
+    },
+    {
+      "id": 29, "roomId": 6, "userId": 113, "startTime": "2026-11-25T18:00:00Z", "endTime": "2026-11-25T19:30:00Z", "status": "active"
+    },
+    {
+      "id": 30, "roomId": 4, "userId": 114, "startTime": "2026-12-02T10:00:00Z", "endTime": "2026-12-02T11:00:00Z", "status": "active"
+    },
+    {
+      "id": 31, "roomId": 1, "userId": 115, "startTime": "2026-12-12T17:00:00Z", "endTime": "2026-12-12T19:00:00Z", "status": "cancelled"
+    },
+    {
+      "id": 32, "roomId": 2, "userId": 116, "startTime": "2026-12-20T18:00:00Z", "endTime": "2026-12-20T19:30:00Z", "status": "active"
+    },
+    {
+      "id": 33, "roomId": 3, "userId": 101, "startTime": "2026-12-28T09:00:00Z", "endTime": "2026-12-28T10:30:00Z", "status": "active"
     }
   ]
 }

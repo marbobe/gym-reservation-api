@@ -4,6 +4,7 @@ import 'dotenv/config';
 
 import roomRoutes from './routes/room.routes.js';
 import reservationRoutes from './routes/reservation.routes.js';
+import databaseRoutes from './routes/database.routes.js';
 
 import { setupSwagger } from './config/swagger.js';
 import { prisma } from './config/prisma.js';
@@ -15,6 +16,7 @@ app.use(cors());
 
 app.use('/api/v1/rooms', roomRoutes);
 app.use('/api/v1/reservations', reservationRoutes)
+app.use('/api/v1/database', databaseRoutes)
 setupSwagger(app);
 
 (async () => {

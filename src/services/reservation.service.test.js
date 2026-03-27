@@ -100,7 +100,87 @@ describe('Reservation Service', () => {
     })
 
     describe('editReservation', () => {
-        it('')
+        it('Debería lanzar error si la reserva que intentas editar ni existe', async () => {
+            const reservaId = 2;
+
+            vi.mocked(reservationRepository.getReservationById).mockResolvedValue(null);
+
+            await expect(editReservation(reservaId))
+                .rejects
+                .toThrow('La reserva que intentas editar no existe.')
+
+            expect(reservationRepository.getReservationById).toHaveBeenCalledOnce();
+            expect(reservationRepository.editReservationById).not.toHaveBeenCalled();
+
+        });
+
+        it('Debería lanzar un error si las fechas proporcionadas no tienen un formato válido', async () => {
+            const idReservation = 2;
+            const mockReservation = { id: 2, startTime: '2026-03-02 14:00:00', endTime: '2026-03-02 10:00:00' };
+            const dataToUpdate = { startTime: 'fechaFalsa1 ', endTime: 'fechaFalsa2' }
+
+            vi.mocked(reservationRepository.getReservationById).mockResolvedValue(mockReservation);
+
+            await expect(editReservation(idReservation, dataToUpdate))
+                .rejects
+                .toThrow('Las fechas proporcionadas no tienen un formato válido.')
+
+            expect(reservationRepository.getReservationById).toHaveBeenCalledOnce();
+            expect(reservationRepository.editReservationById).not.toHaveBeenCalled();
+        });
+
+        it('Debería lanzar error si la hora de fin es anterior a la de inicio', async () => {
+            const idReservation = 2
+            const mockReservation = { id: 2, startTime: '2026-03-02 14:00:00', endTime: '2026-03-02 10:00:00' };
+            const dataToUpdate = { startTime: '2026-03-02 14:00:00', endTime: '2026-03-02 10:00:00' };
+
+            vi.mocked(reservationRepository.getReservationById).mockResolvedValue(mockReservation)
+
+            await expect(editReservation(idReservation, dataToUpdate))
+                .rejects
+                .toThrow('La hora de fin debe ser estrictamente posterior a la hora de inicio')
+
+            expect(reservationRepository.getReservationById).toHaveBeenCalledOnce();
+            expect(reservationRepository.editReservationById).not.toHaveBeenCalled();
+
+
+        });
+
+        it('Debería dar error si la sala ya está reservada en ese horario', async () => {
+            const idReservation = 2
+            const dataToUpdate = { startTime: '2026-03-02 08:00:00', endTime: '2026-03-02 10:00:00' };
+
+            const mockReservation = { id: 2, startTime: '2026-03-02 14:00:00', endTime: '2026-03-02 10:00:00' };
+
+            vi.mocked(reservationRepository.getReservationById).mockResolvedValue(mockReservation);
+            vi.mocked(reservationRepository.checkOverlap).mockResolvedValue(true)
+
+            await expect(editReservation(idReservation, dataToUpdate))
+                .rejects
+                .toThrow('La sala ya está reservada en ese horario. Por favor, elige otro.');
+
+            expect(reservationRepository.getReservationById).toHaveBeenCalledOnce();
+            expect(reservationRepository.checkOverlap).toHaveBeenCalledOnce();
+            expect(reservationRepository.checkOverlap)
+            expect(reservationRepository.editReservationById).not.toHaveBeenCalled();
+        });
+
+        it('Debería devolver el id de reserva con los datos a actualizar', async () => {
+            const reservationId = 1;
+            const dataToUpdate = { startTime: '2026-03-02 12:00:00', endTime: '2026-03-02 14:00:00' };
+            const mockUpdatedReservation = { id: 1, startTime: '2026-03-02 12:00:00', endTime: '2026-03-02 14:00:00' }
+
+            vi.mocked(reservationRepository.editReservationById).mockResolvedValue(mockUpdatedReservation);
+            vi.mocked(reservationRepository.getReservationById).mockResolvedValue(mockUpdatedReservation);
+            vi.mocked(reservationRepository.checkOverlap).mockResolvedValue(false)
+
+            const editedReservation = await editReservation(reservationId, dataToUpdate);
+
+            expect(editedReservation).toEqual(mockUpdatedReservation)
+            expect(reservationRepository.editReservationById).toHaveBeenCalledOnce();
+            expect(reservationRepository.editReservationById).toHaveBeenCalledWith(reservationId, dataToUpdate)
+        });
+
     })
 
     describe('cancelReservation', () => {

@@ -9,7 +9,7 @@
 
 Una API REST robusta y profesional para la gestión de reservas de salas en un gimnasio. Este proyecto ha sido desarrollado siguiendo las mejores prácticas de arquitectura de software, separación de responsabilidades y calidad de código.
 
-> **⚠️ Importante:** Este proyecto dispone de un Frontend para funcionar. Puedes encontrar el código de este (React + TypeScript) en este repositorio: [https://github.com/marbobe/gym-reservation-api](https://github.com/marbobe/gym-reservation-front)
+> **⚠️ Importante:** Este proyecto dispone de un Frontend para funcionar. Puedes encontrar el código de este (React + TypeScript) en este repositorio: [https://github.com/marbobe/gym-reservation-front](https://github.com/marbobe/gym-reservation-front)
 
 ## Características y Tecnologías
 
